@@ -59,6 +59,20 @@ class Race extends AbstractEntity
     private $participants;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    private $bestTime = 0;
+
+    /**
+     * @var Horse
+     *
+     * @ORM\ManyToOne(targetEntity="Race", inversedBy="participants", cascade={"persist"})
+     */
+    private $winner;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
@@ -160,5 +174,37 @@ class Race extends AbstractEntity
     public function setActive(bool $active): void
     {
         $this->active = $active;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBestTime(): int
+    {
+        return $this->bestTime;
+    }
+
+    /**
+     * @param int $bestTime
+     */
+    public function setBestTime(int $bestTime): void
+    {
+        $this->bestTime = $bestTime;
+    }
+
+    /**
+     * @return Horse
+     */
+    public function getWinner(): Horse
+    {
+        return $this->winner;
+    }
+
+    /**
+     * @param Horse $winner
+     */
+    public function setWinner(Horse $winner): void
+    {
+        $this->winner = $winner;
     }
 }

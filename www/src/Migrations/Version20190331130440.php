@@ -53,7 +53,8 @@ final class Version20190331130440 extends AbstractMigration
             ("Flicka", 7.3, 6.8, 7.2, 1),
             ("Omaha", 8.3, 6.6, 7.9, 1),
             ("Assault", 8.4, 7.1, 6.8, 1),
-            ("Apollo", 8.1, 7.3, 7.8, 1)
+            ("Apollo", 8.1, 7.3, 7.8, 1),
+            ("Marley", 5.1, 8.3, 4.8, 1)
             ');
     }
 
