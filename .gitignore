@@ -1,0 +1,9 @@
+.idea
+.DS_Store
+**/.DS_Store
+logs/
+###> www/framework-bundle ###
+www/public/bundles/
+www/var/
+www/vendor/
+###< www/framework-bundle ###
