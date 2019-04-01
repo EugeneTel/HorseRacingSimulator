@@ -1,3 +1,9 @@
 index:
     path: /
     controller: App\Controller\DefaultController::index
+create:
+    path: /create
+    controller: App\Controller\DefaultController::create
+proceed:
+    path: /proceed/{raceId}
+    controller: App\Controller\DefaultController::proceed

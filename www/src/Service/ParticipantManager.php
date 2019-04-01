@@ -75,4 +75,15 @@ class ParticipantManager
 
         $this->em->flush();
     }
+
+    /**
+     * @param ArrayCollection $participants
+     */
+    public function updateState(ArrayCollection $participants): void
+    {
+        foreach ($participants as $participant) {
+            $this->em->persist($participant);
+            $this->em->flush();
+        }
+    }
 }

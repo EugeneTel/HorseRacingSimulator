@@ -15,6 +15,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Horse extends AbstractEntity
 {
+
+    const BASE_SPEED = 5;
+
+    const JOCKEY_SLOWS = 5;
+
+    const JOCKEY_REDUCER = 8;
+
     /**
      * @var int
      *
@@ -173,5 +180,29 @@ class Horse extends AbstractEntity
     public function setActive(bool $active): void
     {
         $this->active = $active;
+    }
+
+    /**
+     * @return float
+     */
+    public function getMaxSpeed(): float
+    {
+        return self::BASE_SPEED + $this->getSpeed();
+    }
+
+    /**
+     * @return float
+     */
+    public function getMaxSpeedDistance(): float
+    {
+        return $this->getEndurance() * 100;
+    }
+
+    /**
+     * @return float
+     */
+    public function getSlowSpeed(): float
+    {
+        return $this->getMaxSpeed() - self::JOCKEY_SLOWS * ((100 - ($this->getStrength() * self::JOCKEY_REDUCER)) / 100);
     }
 }

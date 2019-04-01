@@ -18,10 +18,13 @@ use \DateTime;
 class Race extends AbstractEntity
 {
     /** @var int */
-    const NUMBER_OF_HORSES = 8;
+    const NUMBER_OF_PARTICIPANTS = 8;
 
     /** @var int */
     const DISTANCE = 1500;
+
+    /** @var int */
+    const PROCEED_SECONDS = 10;
 
     /**
      * @var int
@@ -63,14 +66,28 @@ class Race extends AbstractEntity
      *
      * @ORM\Column(type="integer")
      */
+    private $distance = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
     private $bestTime = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    private $currentTime = 0;
 
     /**
      * @var Horse
      *
-     * @ORM\ManyToOne(targetEntity="Race", inversedBy="participants", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Race", cascade={"persist"})
      */
-    private $winner;
+    private $leader;
 
     /**
      * @var boolean
@@ -142,7 +159,7 @@ class Race extends AbstractEntity
     /**
      * @return Participant[]|ArrayCollection
      */
-    public function getParticipants()
+    public function getParticipants(): ArrayCollection
     {
         return $this->participants;
     }
@@ -158,6 +175,16 @@ class Race extends AbstractEntity
         foreach ($participants as $participant) {
             $participant->setRace($this);
         }
+    }
+
+    /**
+     * @return Participant[]|ArrayCollection
+     */
+    public function getActiveParticipants(): ArrayCollection
+    {
+        return $this->getParticipants()->filter(function (Participant $participant) {
+           return $participant->isActive();
+        });
     }
 
     /**
@@ -193,18 +220,50 @@ class Race extends AbstractEntity
     }
 
     /**
-     * @return Horse
+     * @return int
      */
-    public function getWinner(): Horse
+    public function getCurrentTime(): int
     {
-        return $this->winner;
+        return $this->currentTime;
     }
 
     /**
-     * @param Horse $winner
+     * @param int $currentTime
      */
-    public function setWinner(Horse $winner): void
+    public function setCurrentTime(int $currentTime): void
     {
-        $this->winner = $winner;
+        $this->bestTime = $currentTime;
+    }
+
+    /**
+     * @return Horse
+     */
+    public function getLeader(): Horse
+    {
+        return $this->leader;
+    }
+
+    /**
+     * @param Horse $leader
+     */
+    public function setLeader(Horse $leader): void
+    {
+        $this->leader = $leader;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDistance(): int
+    {
+        return $this->distance;
+    }
+
+    /**
+     * @param int $distance
+     */
+    public function setDistance(int $distance): void
+    {
+        $this->distance = $distance;
     }
 }

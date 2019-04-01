@@ -23,10 +23,10 @@ final class Version20190331234516 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('CREATE TABLE participant (id INT AUTO_INCREMENT NOT NULL, race_id INT NOT NULL, horse_id INT NOT NULL, distance DOUBLE PRECISION NOT NULL, time INT NOT NULL, position SMALLINT NOT NULL, active TINYINT(1) NOT NULL, INDEX IDX_D79F6B116E59D40D (race_id), INDEX IDX_D79F6B1176B275AD (horse_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE race (id INT AUTO_INCREMENT NOT NULL, winner_id INT DEFAULT NULL, start_date DATETIME NOT NULL, end_date DATETIME NOT NULL, best_time INT NOT NULL, active TINYINT(1) NOT NULL, INDEX IDX_DA6FBBAF5DFCD4B8 (winner_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE race (id INT AUTO_INCREMENT NOT NULL, leader_id INT DEFAULT NULL, start_date DATETIME NOT NULL, end_date DATETIME NOT NULL, distance INT NOT NULL, best_time INT NOT NULL, current_time INT NOT NULL, active TINYINT(1) NOT NULL, INDEX IDX_DA6FBBAF5DFCD4B8 (leader_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('ALTER TABLE participant ADD CONSTRAINT FK_D79F6B116E59D40D FOREIGN KEY (race_id) REFERENCES race (id)');
         $this->addSql('ALTER TABLE participant ADD CONSTRAINT FK_D79F6B1176B275AD FOREIGN KEY (horse_id) REFERENCES horse (id)');
-        $this->addSql('ALTER TABLE race ADD CONSTRAINT FK_DA6FBBAF5DFCD4B8 FOREIGN KEY (winner_id) REFERENCES race (id)');
+        $this->addSql('ALTER TABLE race ADD CONSTRAINT FK_DA6FBBAF5DFCD4B8 FOREIGN KEY (leader_id) REFERENCES race (id)');
     }
 
     public function down(Schema $schema) : void

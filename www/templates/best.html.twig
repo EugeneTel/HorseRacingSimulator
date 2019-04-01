@@ -1,12 +1,12 @@
 <p>
 <div class="card" style="width: 18rem;">
     <div class="card-header">
-        Race #134 Horse: Rossinant
+        Race #{{ race.id }} Time: {{ race.bestTime }} Horse: {{ horse.name }}
     </div>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
+        <li class="list-group-item">Speed: {{ horse.speed }}</li>
+        <li class="list-group-item">Strength: {{ horse.strength }}</li>
+        <li class="list-group-item">Endurance: {{ horse.endurance }}</li>
     </ul>
 </div>
 </p>
