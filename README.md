@@ -32,3 +32,6 @@ race have completed 1500m
 - Any currently running races, showing distance covered, horse position, current time
 - The last 5 race results (top 3 positions and times to complete 1500m)
 - The best ever time, and the stats of the horse that generated it
+
+**How it looks like**
+![alt text](https://cdn1.imggmi.com/uploads/2019/4/1/986f92a4d2ab4e0bafd2be8f60cf57cf-full.png)
