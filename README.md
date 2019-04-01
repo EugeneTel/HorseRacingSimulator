@@ -34,4 +34,4 @@ race have completed 1500m
 - The best ever time, and the stats of the horse that generated it
 
 **How it looks like**
-![alt text](https://cdn1.imggmi.com/uploads/2019/4/1/986f92a4d2ab4e0bafd2be8f60cf57cf-full.png)
+[link]()https://drive.google.com/open?id=1MzW8spQEPlyGpgPToXg-T7G2q_sgjpxd)
