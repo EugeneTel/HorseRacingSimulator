@@ -86,7 +86,7 @@ class Race extends AbstractEntity
     /**
      * @var Horse
      *
-     * @ORM\ManyToOne(targetEntity="Race", cascade={"persist"}, fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="Participant", cascade={"persist"}, fetch="EAGER")
      */
     private $leader;
 
@@ -237,17 +237,17 @@ class Race extends AbstractEntity
     }
 
     /**
-     * @return Horse
+     * @return Participant
      */
-    public function getLeader(): Horse
+    public function getLeader(): Participant
     {
         return $this->leader;
     }
 
     /**
-     * @param Horse $leader
+     * @param Participant $leader
      */
-    public function setLeader(Horse $leader): void
+    public function setLeader(Participant $leader): void
     {
         $this->leader = $leader;
     }

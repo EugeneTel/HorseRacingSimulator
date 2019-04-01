@@ -93,6 +93,10 @@ class DefaultController extends AbstractController
     {
         $race = $this->raceManager->getById($raceId);
 
+        if (!$race->isActive()) {
+            return $this->redirectToRoute('index');
+        }
+
         $this->raceCalculationService->proceed($race);
 
         $this->raceManager->updateState($race);

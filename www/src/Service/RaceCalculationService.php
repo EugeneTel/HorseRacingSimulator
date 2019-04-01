@@ -46,12 +46,11 @@ class RaceCalculationService
         }
 
         $participants = $participantCalculator->calculatePositions($participants);
+
         $leader = $participantCalculator->getLeader($participants);
 
-        $race->setParticipants($participants);
-
         if ($leader) {
-            $race->setLeader($leader->getHorse());
+            $race->setLeader($leader);
             $race->setBestTime($leader->getTime());
         }
 

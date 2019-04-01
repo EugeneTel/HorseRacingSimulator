@@ -63,7 +63,7 @@ class ParticipantManager
      *
      * @param ArrayCollection $participants
      */
-    public function releaseParticipants(ArrayCollection $participants): void
+    public function releaseParticipants($participants): void
     {
         /** @var Participant $participant */
         foreach ($participants as $participant)

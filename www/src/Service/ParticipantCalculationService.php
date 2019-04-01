@@ -69,13 +69,21 @@ class ParticipantCalculationService
     {
         $iterator = $participants->getIterator();
         $iterator->uasort(function ($a, $b) {
-            return ($a->getTime() < $b->getTime()) ? -1 : 1;
+            return ($a->getTime() > $b->getTime()) ? -1 : 1;
         });
 
-        $sortedParticipants = new ArrayCollection(iterator_to_array($iterator));
+        $sortedParticipants = new ArrayCollection();
 
-        for ($i = 1; $i < $sortedParticipants->count(); $i++) {
-            $sortedParticipants[$i]->setPosition($i);
+        for ($i = 0; $i < $sortedParticipants->count(); $i++) {
+            $sortedParticipants[$i]->setPosition($i + 1);
+        }
+
+        $position = 1;
+        /** @var Participant $participant */
+        foreach (iterator_to_array($iterator) as $participant) {
+            $participant->setPosition($position);
+            $sortedParticipants->add($participant);
+            $position++;
         }
 
         return $sortedParticipants;
