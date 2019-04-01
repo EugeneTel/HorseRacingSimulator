@@ -59,7 +59,7 @@ class DefaultController extends AbstractController
         $this->raceCalculationService = $raceCalculationService;
         $this->participantManager = $participantManager;
         $this->raceManager = $raceManager;
-        $this->em = $this->getDoctrine()->getManager();
+
     }
 
     /**
@@ -69,6 +69,7 @@ class DefaultController extends AbstractController
      */
     public function index()
     {
+        $this->em = $this->getDoctrine()->getManager();
         $raceRepository = $this->em->getRepository(Race::class);
 
         $activeRaces = $raceRepository->getActiveList();

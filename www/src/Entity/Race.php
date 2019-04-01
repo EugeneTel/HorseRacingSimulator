@@ -56,7 +56,8 @@ class Race extends AbstractEntity
      *      targetEntity="Participant",
      *      mappedBy="race",
      *      orphanRemoval=true,
-     *      cascade={"persist"}
+     *      cascade={"persist"},
+     *      fetch="EAGER"
      * )
      */
     private $participants;
@@ -85,7 +86,7 @@ class Race extends AbstractEntity
     /**
      * @var Horse
      *
-     * @ORM\ManyToOne(targetEntity="Race", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Race", cascade={"persist"}, fetch="EAGER")
      */
     private $leader;
 

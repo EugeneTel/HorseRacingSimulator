@@ -11,13 +11,13 @@ class RaceRepository extends EntityRepository
     /**
      * Get Active Races
      *
-     * @return ArrayCollection
+     * @return array
      */
-    public function getActiveList(): ArrayCollection
+    public function getActiveList(): ?array
     {
-        $this->findBy(
+        return $this->findBy(
             ['active' => true],
-            ['start_date' => 'DESC']
+            ['startDate' => 'DESC']
         );
     }
 
@@ -26,13 +26,13 @@ class RaceRepository extends EntityRepository
      *
      * @param $maxResults
      *
-     * @return ArrayCollection
+     * @return array
      */
-    public function getLastFinished($maxResults): ArrayCollection
+    public function getLastFinished($maxResults): ?array
     {
-        $this->findBy(
+        return $this->findBy(
             ['active' => false],
-            ['start_date' => 'DESC'],
+            ['startDate' => 'DESC'],
             $maxResults
         );
     }
@@ -42,11 +42,11 @@ class RaceRepository extends EntityRepository
      *
      * @return Race
      */
-    public function getBestRace(): Race
+    public function getBestRace(): ?Race
     {
-        $this->findOneBy(
+        return $this->findOneBy(
             ['active' => false],
-            ['best_time' => 'ASK']
+            ['bestTime' => 'ASC']
         );
     }
 }

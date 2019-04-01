@@ -23,5 +23,16 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+    App\Service\HorseCalculationService:
+        autowire: true
+    App\Service\ParticipantCalculationService:
+        autowire: true
+    App\Service\ParticipantManager:
+        autowire: true
+    App\Service\RaceCalculationService:
+        autowire: true
+    App\Service\RaceManager:
+        autowire: true
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

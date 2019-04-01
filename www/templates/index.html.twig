@@ -9,18 +9,22 @@
             {% endfor %}
         </div>
         <div class="col-sm-2">
-            <div>
-                <p><h4 class="display-8">The best Race</h4></p>
-                {% include "best.html.twig" with {'race': bestRace, 'horse': bestRace.leader.horse} %}
-            </div>
+            {% if bestRace %}
+                <div>
+                    <p><h4 class="display-8">The best Race</h4></p>
+                    {% include "best.html.twig" with {'race': bestRace, 'horse': bestRace.leader.horse} %}
+                </div>
+            {% endif %}
 
-            <div>
-                <p><h4 class="display-8">Last Results</h4></p>
+            {% if activeRaces %}
+                <div>
+                    <p><h4 class="display-8">Last Results</h4></p>
 
-                {% for race in activeRaces %}
-                    {% include "last.html.twig" with {'race': race} %}
-                {% endfor %}
-            </div>
+                    {% for race in activeRaces %}
+                        {% include "last.html.twig" with {'race': race} %}
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </div>
 

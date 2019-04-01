@@ -26,14 +26,14 @@ class Participant extends AbstractEntity
     /**
      * @var Race
      *
-     * @ORM\ManyToOne(targetEntity="Race", inversedBy="participants", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Race", inversedBy="participants", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $race;
     /**
      * @var Horse
      *
-     * @ORM\ManyToOne(targetEntity="Horse", inversedBy="participate")
+     * @ORM\ManyToOne(targetEntity="Horse", inversedBy="participate", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $horse;

@@ -20,7 +20,7 @@ class ParticipantCalculationService
      *
      * @param int $distance
      */
-    public function __construct(int $distance)
+    public function __construct(int $distance = 1500)
     {
         $this->distance = $distance;
     }
