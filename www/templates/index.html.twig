@@ -16,11 +16,11 @@
                 </div>
             {% endif %}
 
-            {% if activeRaces %}
+            {% if lastRaces %}
                 <div>
                     <p><h4 class="display-8">Last Results</h4></p>
 
-                    {% for race in activeRaces %}
+                    {% for race in lastRaces %}
                         {% include "last.html.twig" with {'race': race} %}
                     {% endfor %}
                 </div>

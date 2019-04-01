@@ -69,14 +69,10 @@ class ParticipantCalculationService
     {
         $iterator = $participants->getIterator();
         $iterator->uasort(function ($a, $b) {
-            return ($a->getTime() > $b->getTime()) ? -1 : 1;
+            return ($a->getDistance() > $b->getDistance()) ? -1 : 1;
         });
 
         $sortedParticipants = new ArrayCollection();
-
-        for ($i = 0; $i < $sortedParticipants->count(); $i++) {
-            $sortedParticipants[$i]->setPosition($i + 1);
-        }
 
         $position = 1;
         /** @var Participant $participant */

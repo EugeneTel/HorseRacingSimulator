@@ -233,7 +233,7 @@ class Race extends AbstractEntity
      */
     public function setCurTime(int $curTime): void
     {
-        $this->bestTime = $curTime;
+        $this->curTime = $curTime;
     }
 
     /**
