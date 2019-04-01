@@ -81,7 +81,7 @@ class Race extends AbstractEntity
      *
      * @ORM\Column(type="integer")
      */
-    private $currentTime = 0;
+    private $curTime = 0;
 
     /**
      * @var Horse
@@ -160,7 +160,7 @@ class Race extends AbstractEntity
     /**
      * @return Participant[]|ArrayCollection
      */
-    public function getParticipants(): ArrayCollection
+    public function getParticipants()
     {
         return $this->participants;
     }
@@ -223,17 +223,17 @@ class Race extends AbstractEntity
     /**
      * @return int
      */
-    public function getCurrentTime(): int
+    public function getCurTime(): int
     {
-        return $this->currentTime;
+        return $this->curTime;
     }
 
     /**
-     * @param int $currentTime
+     * @param int $curTime
      */
-    public function setCurrentTime(int $currentTime): void
+    public function setCurTime(int $curTime): void
     {
-        $this->bestTime = $currentTime;
+        $this->bestTime = $curTime;
     }
 
     /**

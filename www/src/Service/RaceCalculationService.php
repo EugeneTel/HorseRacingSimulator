@@ -49,9 +49,13 @@ class RaceCalculationService
         $leader = $participantCalculator->getLeader($participants);
 
         $race->setParticipants($participants);
-        $race->setLeader($leader->getHorse());
-        $race->setBestTime($leader->getTime());
-        $race->setCurrentTime($race->getCurrentTime() + Race::PROCEED_SECONDS);
+
+        if ($leader) {
+            $race->setLeader($leader->getHorse());
+            $race->setBestTime($leader->getTime());
+        }
+
+        $race->setCurTime($race->getCurTime() + Race::PROCEED_SECONDS);
         $this->checkFinish($race);
     }
 

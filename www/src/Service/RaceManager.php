@@ -38,6 +38,8 @@ class RaceManager
         if (!$race || !$race instanceof Race) {
             throw new RaceNotFoundException('Race not found', 404);
         }
+
+        return $race;
     }
 
     /**

@@ -59,7 +59,6 @@ class DefaultController extends AbstractController
         $this->raceCalculationService = $raceCalculationService;
         $this->participantManager = $participantManager;
         $this->raceManager = $raceManager;
-
     }
 
     /**
@@ -111,10 +110,11 @@ class DefaultController extends AbstractController
      */
     public function create()
     {
-        /** @var ArrayCollection $races */
+        $this->em = $this->getDoctrine()->getManager();
+
         $races = $this->em->getRepository(Race::class)->getActiveList();
 
-        if ($races->count() >= self::MAX_RACES) {
+        if (count($races) >= self::MAX_RACES) {
             return $this->redirectToRoute('index');
         }
 
